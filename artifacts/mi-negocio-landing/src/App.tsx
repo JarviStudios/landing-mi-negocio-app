@@ -7,7 +7,6 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  CircleDollarSign,
   Menu,
   Package,
   ShoppingBasket,
@@ -110,14 +109,14 @@ const questions = [
 function BrandMark() {
   return (
     <a href="#inicio" className="flex items-center gap-3" aria-label="Mi Negocio App, inicio">
-      <span className="grid h-10 w-10 place-items-center rounded-[14px] bg-[#1e5948] text-[#f7f1df]">
-        <span className="relative block h-[19px] w-[19px]">
-          <span className="absolute left-0 top-0 h-[8px] w-[8px] rounded-[3px] bg-[#e8b64e]" />
-          <span className="absolute right-0 top-0 h-[8px] w-[8px] rounded-[3px] bg-[#f3eee0]" />
-          <span className="absolute bottom-0 left-0 h-[8px] w-[8px] rounded-[3px] bg-[#f3eee0]" />
-          <span className="absolute bottom-0 right-0 h-[8px] w-[8px] rounded-[3px] bg-[#df7b5d]" />
-        </span>
-      </span>
+      <img
+        src="/app-icon.png"
+        alt=""
+        width={512}
+        height={512}
+        aria-hidden="true"
+        className="h-10 w-10 rounded-[14px] object-contain"
+      />
       <span className="leading-none">
         <span className="block font-semibold tracking-[-.04em] text-[#1c3d34]">mi negocio</span>
         <span className="mt-1 block text-[10px] font-bold uppercase tracking-[.19em] text-[#718078]">app para crecer</span>
@@ -230,10 +229,9 @@ function App() {
         <div className="relative mx-auto mt-16 flex h-[460px] w-full max-w-[610px] items-center justify-center md:mt-0 md:h-[600px]">
           <div className="absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e7d894]/50 md:h-[500px] md:w-[500px]" />
           <div className="grain absolute left-1/2 top-1/2 h-[315px] w-[315px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d9c98d] md:h-[410px] md:w-[410px]" />
-          <div className="absolute left-[7%] top-[19%] z-10 hidden rounded-[18px] border border-[#e2ddcd] bg-[#fffdf4] px-4 py-3 shadow-[0_14px_35px_rgba(31,61,50,.1)] sm:block">
-            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.1em] text-[#7b897e]"><span className="grid h-7 w-7 place-items-center rounded-[9px] bg-[#f8e6c5] text-[#bd754b]"><CircleDollarSign size={15} /></span> Venta de hoy</div>
-            <p className="display mt-2 text-[22px] font-extrabold text-[#1d493b]">$ 2,480</p>
-            <p className="text-[10px] text-[#738175]">18 movimientos registrados</p>
+          <div className="absolute left-[7%] top-[19%] z-10 hidden w-[145px] rounded-[15px] border border-[#e5e5e5] bg-[#fafafa] px-3 py-2.5 shadow-[0_8px_20px_rgba(34,34,34,.07)] sm:block">
+            <p className="text-[11px] font-medium leading-tight text-[#777777]">Hoy</p>
+            <p className="mt-1.5 text-[15px] font-bold leading-tight tracking-[-.02em] text-[#8957e7]">Q486.75</p>
           </div>
           <div className="absolute bottom-[15%] right-[2%] z-20 hidden w-[190px] rounded-[18px] border border-[#dfdccf] bg-[#fffdf4] p-3.5 shadow-[0_14px_35px_rgba(31,61,50,.1)] sm:block">
             <div className="flex items-center gap-2">
