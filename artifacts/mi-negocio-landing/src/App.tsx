@@ -1,0 +1,379 @@
+import { useState } from 'react';
+import {
+  ArrowDownRight,
+  ArrowRight,
+  Bell,
+  Check,
+  ChevronDown,
+  CircleDollarSign,
+  Clock3,
+  Menu,
+  Package,
+  ShoppingBasket,
+  Smartphone,
+  Truck,
+  X,
+} from 'lucide-react';
+
+const playUrl = 'https://play.google.com/store/apps/details?id=com.minegocioapp.app';
+
+const features = [
+  {
+    number: '01',
+    icon: Package,
+    title: 'Control de Inventario y Alertas',
+    text: 'Ten a la vista lo que tienes, lo que se mueve y lo que ya toca reponer. Sin contar a ciegas al final del día.',
+    detail: 'Existencias al día · Avisos de stock bajo',
+    tone: 'sage',
+  },
+  {
+    number: '02',
+    icon: ShoppingBasket,
+    title: 'Registro de Ventas Rápidas',
+    text: 'Registra cada venta en unos toques y vuelve a atender. El inventario se actualiza mientras sigues con tu negocio.',
+    detail: 'Venta sencilla · Historial claro',
+    tone: 'yellow',
+  },
+  {
+    number: '03',
+    icon: Truck,
+    title: 'Gestión de Proveedores',
+    text: 'Guarda los datos de tus proveedores y ten a mano a quién llamar cuando un producto empieza a escasear.',
+    detail: 'Contactos organizados · Reposición fácil',
+    tone: 'coral',
+  },
+  {
+    number: '04',
+    icon: Bell,
+    title: 'Notificaciones Automáticas',
+    text: 'Recibe recordatorios útiles para estar pendiente de tu inventario, sin tener que revisar cada producto uno por uno.',
+    detail: 'Avisos oportunos · Menos pendientes',
+    tone: 'blue',
+  },
+];
+
+const questions = [
+  {
+    q: '¿Mi Negocio App es un punto de venta gratis?',
+    a: 'Puedes descargar Mi Negocio App desde Google Play Store y empezar a organizar las ventas y el inventario de tu negocio desde tu celular. Consulta la ficha de la app para conocer sus condiciones actuales.',
+  },
+  {
+    q: '¿Necesito experiencia con sistemas de inventario?',
+    a: 'No. La app está pensada para el trabajo diario de una tienda: registrar productos, anotar ventas y revisar qué hace falta reponer, con pasos fáciles de seguir.',
+  },
+  {
+    q: '¿Las imágenes de esta página son capturas reales?',
+    a: 'No. Las pantallas que ves son ilustraciones conceptuales para mostrar cómo se organiza la información. La interfaz real puede variar.',
+  },
+];
+
+function BrandMark() {
+  return (
+    <a href="#inicio" className="flex items-center gap-3" aria-label="Mi Negocio App, inicio">
+      <span className="grid h-10 w-10 place-items-center rounded-[14px] bg-[#1e5948] text-[#f7f1df]">
+        <span className="relative block h-[19px] w-[19px]">
+          <span className="absolute left-0 top-0 h-[8px] w-[8px] rounded-[3px] bg-[#e8b64e]" />
+          <span className="absolute right-0 top-0 h-[8px] w-[8px] rounded-[3px] bg-[#f3eee0]" />
+          <span className="absolute bottom-0 left-0 h-[8px] w-[8px] rounded-[3px] bg-[#f3eee0]" />
+          <span className="absolute bottom-0 right-0 h-[8px] w-[8px] rounded-[3px] bg-[#df7b5d]" />
+        </span>
+      </span>
+      <span className="leading-none">
+        <span className="block font-semibold tracking-[-.04em] text-[#1c3d34]">mi negocio</span>
+        <span className="mt-1 block text-[10px] font-bold uppercase tracking-[.19em] text-[#718078]">app para crecer</span>
+      </span>
+    </a>
+  );
+}
+
+function PlayButton({ compact = false }: { compact?: boolean }) {
+  return (
+    <a
+      href={playUrl}
+      target="_blank"
+      rel="noreferrer"
+      className={`cta inline-flex items-center justify-center gap-3 rounded-full bg-[#1d5847] px-6 py-4 font-semibold text-[#fff9e9] shadow-[0_8px_20px_rgba(29,88,71,.13)] ${compact ? 'text-sm' : 'text-[15px]'}`}
+    >
+      <span className="grid h-7 w-7 place-items-center rounded-full bg-[#f1c765] text-[#1d5847]">
+        <ArrowRight size={15} strokeWidth={2.5} />
+      </span>
+      <span>Descargar en Google Play Store</span>
+    </a>
+  );
+}
+
+function PhoneMockup({ variant = 'sales' }: { variant?: 'sales' | 'stock' }) {
+  const sales = variant === 'sales';
+  return (
+    <div className={`relative w-[250px] rounded-[35px] border-[7px] border-[#183c34] bg-[#183c34] p-[4px] shadow-[0_34px_80px_rgba(25,55,47,.23)] ${sales ? 'phone-float' : 'phone-float-small'}`}>
+      <div className="overflow-hidden rounded-[26px] bg-[#f8f6ed]">
+        <div className="flex h-7 items-center justify-between bg-[#f8f6ed] px-5 text-[9px] font-bold text-[#26473e]">
+          <span>9:41</span><span className="tracking-[.1em]">● ▮ ▰</span>
+        </div>
+        <div className="phone-screen px-4 pb-5 pt-2">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[9px] font-semibold uppercase tracking-[.14em] text-[#86918a]">MIÉRCOLES, 12 JUN</p>
+              <p className="display mt-1 text-[18px] font-extrabold text-[#1c3d34]">Hola, Ana</p>
+            </div>
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#e5eddf] text-[11px] font-bold text-[#315e4d]">A</span>
+          </div>
+          <div className="mt-4 rounded-[17px] bg-[#215c49] p-3.5 text-[#fff9e9]">
+            <div className="flex items-center justify-between text-[9px] text-[#d6e5db]">
+              <span>{sales ? 'VENTAS DE HOY' : 'PRODUCTOS EN STOCK'}</span>
+              <span className="rounded-full bg-white/10 px-2 py-1">Hoy</span>
+            </div>
+            <p className="display mt-2 text-[25px] font-extrabold">{sales ? '$ 2,480' : '128'}</p>
+            <div className="mt-2 flex items-center gap-1.5 text-[9px] text-[#e7c66e]">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#e7c66e]" />
+              {sales ? '18 ventas registradas' : '6 productos por reponer'}
+            </div>
+          </div>
+          <div className="mt-4 flex items-center justify-between">
+            <p className="text-[11px] font-bold text-[#29463d]">{sales ? 'Venta reciente' : 'Revisar inventario'}</p>
+            <span className="text-[9px] font-semibold text-[#59836e]">Ver todo</span>
+          </div>
+          {sales ? (
+            <div className="mt-2 space-y-2">
+              {[
+                ['Pan integral', '10:42 a. m.', '$ 48.00', '#f0d98e'],
+                ['Leche entera', '10:18 a. m.', '$ 32.50', '#e9baa5'],
+                ['Arroz 1 kg', '9:56 a. m.', '$ 29.00', '#b9d4c0'],
+              ].map(([name, time, price, tint]) => (
+                <div key={name} className="flex items-center gap-2.5 rounded-[12px] border border-[#e9e5d9] bg-white/70 p-2">
+                  <span className="h-8 w-8 rounded-[9px]" style={{ backgroundColor: tint }} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[10px] font-bold text-[#30483f]">{name}</span>
+                    <span className="block text-[8px] text-[#8a938b]">{time}</span>
+                  </span>
+                  <span className="text-[10px] font-bold text-[#315b4b]">{price}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="mt-2 space-y-2">
+              {[
+                ['Café molido 250 g', 'Quedan 3 unidades', '!', '#dd7d5e'],
+                ['Aceite vegetal 1 L', 'Quedan 5 unidades', '!', '#d9aa47'],
+                ['Galletas de avena', 'Quedan 8 unidades', '·', '#85a98d'],
+              ].map(([name, stock, sign, color]) => (
+                <div key={name} className="flex items-center gap-2 rounded-[12px] border border-[#e9e5d9] bg-white/70 p-2">
+                  <span className="grid h-7 w-7 place-items-center rounded-[8px] bg-[#f1eadb] text-[10px] font-bold" style={{ color }}>{sign}</span>
+                  <span><span className="block text-[9px] font-bold text-[#30483f]">{name}</span><span className="block text-[8px] text-[#8a938b]">{stock}</span></span>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="mt-3 flex items-center justify-around border-t border-[#e6e2d6] pt-3 text-[8px] font-semibold text-[#8a938b]">
+            <span className="text-[#315b4b]">⌂ Inicio</span><span>▦ Productos</span><span>◷ Ventas</span><span>☷ Más</span>
+          </div>
+        </div>
+      </div>
+      <div className="absolute left-1/2 top-[8px] h-[13px] w-[64px] -translate-x-1/2 rounded-full bg-[#183c34]" />
+    </div>
+  );
+}
+
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [openQuestion, setOpenQuestion] = useState<number | null>(0);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  return (
+    <main id="inicio" className="overflow-hidden">
+      <header className="relative z-20 mx-auto flex max-w-[1240px] items-center justify-between px-5 py-5 md:px-10">
+        <BrandMark />
+        <nav className="hidden items-center gap-9 text-[13px] font-semibold text-[#53675e] md:flex" aria-label="Navegación principal">
+          <a className="nav-link" href="#funciones">Funciones</a>
+          <a className="nav-link" href="#como-funciona">Cómo funciona</a>
+          <a className="nav-link" href="#preguntas">Preguntas</a>
+        </nav>
+        <a href={playUrl} target="_blank" rel="noreferrer" className="hidden rounded-full border border-[#c9d0c4] px-5 py-3 text-[13px] font-bold text-[#24483c] transition hover:border-[#1d5847] hover:bg-[#e9eddf] sm:inline-flex">
+          Descargar app <ArrowRight className="ml-2" size={15} />
+        </a>
+        <button className="grid h-11 w-11 place-items-center rounded-full border border-[#d8d5c8] text-[#23473b] md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+        {menuOpen && (
+          <nav className="absolute left-4 right-4 top-[76px] flex flex-col gap-1 rounded-2xl border border-[#e0dccf] bg-[#faf7ed] p-3 shadow-xl md:hidden" aria-label="Navegación móvil">
+            {[['Funciones', '#funciones'], ['Cómo funciona', '#como-funciona'], ['Preguntas', '#preguntas']].map(([label, href]) => (
+              <a key={href} onClick={closeMenu} href={href} className="rounded-xl px-4 py-3 text-sm font-semibold text-[#294d40] hover:bg-[#eeecdf]">{label}</a>
+            ))}
+            <a onClick={closeMenu} href={playUrl} target="_blank" rel="noreferrer" className="mt-1 rounded-xl bg-[#1d5847] px-4 py-3 text-sm font-bold text-[#fff9e9]">Descargar en Google Play Store</a>
+          </nav>
+        )}
+      </header>
+
+      <section className="hero-grid relative mx-auto grid min-h-[690px] max-w-[1440px] grid-cols-1 items-center px-5 pb-16 pt-10 md:min-h-[690px] md:grid-cols-[1.02fr_.98fr] md:px-10 md:pb-24 md:pt-8">
+        <div className="relative z-10 mx-auto w-full max-w-[630px] md:ml-auto md:mr-0 md:pb-9">
+          <div className="reveal inline-flex items-center gap-2 rounded-full border border-[#d8d5c5] bg-[#f8f5ea]/80 px-3.5 py-2 text-[11px] font-bold uppercase tracking-[.12em] text-[#4e7761]">
+            <span className="h-2 w-2 rounded-full bg-[#df865f]" />
+            Menos vueltas. Más negocio.
+          </div>
+          <h1 className="display reveal reveal-delay-1 mt-6 max-w-[690px] text-[clamp(2.9rem,6vw,5.8rem)] font-extrabold leading-[.99] text-[#1c3c33]">
+            El punto de venta y control de inventario <span className="relative inline-block text-[#c56e4f]">fácil<span className="absolute -bottom-1 left-0 h-[5px] w-full rounded-full bg-[#e9bd57]" /></span> para tu negocio
+          </h1>
+          <p className="reveal reveal-delay-2 mt-7 max-w-[500px] text-[16px] leading-[1.75] text-[#5c6b60] md:text-[17px]">
+            Mi Negocio App te ayuda a registrar ventas, ordenar tus productos y saber qué reponer, todo desde el celular. Claro y práctico para el ritmo real de tu tienda.
+          </p>
+          <div className="reveal reveal-delay-3 mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <PlayButton />
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-semibold text-[#778177]">
+            <span className="inline-flex items-center gap-2"><Check size={14} className="text-[#438060]" /> Diseñada para negocios pequeños</span>
+            <span className="inline-flex items-center gap-2"><Smartphone size={13} className="text-[#438060]" /> En tu celular, donde estés</span>
+          </div>
+        </div>
+
+        <div className="relative mx-auto mt-16 flex h-[460px] w-full max-w-[610px] items-center justify-center md:mt-0 md:h-[600px]">
+          <div className="absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e7d894]/50 md:h-[500px] md:w-[500px]" />
+          <div className="grain absolute left-1/2 top-1/2 h-[315px] w-[315px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d9c98d] md:h-[410px] md:w-[410px]" />
+          <div className="absolute left-[7%] top-[19%] z-10 hidden rounded-[18px] border border-[#e2ddcd] bg-[#fffdf4] px-4 py-3 shadow-[0_14px_35px_rgba(31,61,50,.1)] sm:block">
+            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.1em] text-[#7b897e]"><span className="grid h-7 w-7 place-items-center rounded-[9px] bg-[#f8e6c5] text-[#bd754b]"><CircleDollarSign size={15} /></span> Venta de hoy</div>
+            <p className="display mt-2 text-[22px] font-extrabold text-[#1d493b]">$ 2,480</p>
+            <p className="text-[10px] text-[#738175]">18 movimientos registrados</p>
+          </div>
+          <div className="absolute bottom-[15%] right-[2%] z-20 hidden w-[190px] rounded-[18px] border border-[#dfdccf] bg-[#fffdf4] p-3.5 shadow-[0_14px_35px_rgba(31,61,50,.1)] sm:block">
+            <div className="flex items-center gap-2">
+              <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-[#f6e3d8] text-[#c16c4e]"><Bell size={15} /></span>
+              <span className="text-[10px] font-bold text-[#2b493d]">Aviso de inventario</span>
+            </div>
+            <p className="mt-2 text-[10px] leading-relaxed text-[#718076]">Café molido: quedan pocas unidades.</p>
+          </div>
+          <div className="relative z-10 translate-x-5 md:translate-x-8"><PhoneMockup /></div>
+          <div className="absolute left-[2%] top-[27%] z-0 hidden scale-[.83] sm:block"><PhoneMockup variant="stock" /></div>
+          <div className="absolute bottom-[10%] left-[7%] z-20 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-[#dc7f5f] text-[#fff6e7] shadow-lg"><ArrowDownRight size={25} /></div>
+          <p className="absolute bottom-[2%] right-[6%] z-20 max-w-[150px] text-right text-[9px] font-semibold uppercase leading-relaxed tracking-[.13em] text-[#748178]">Pantallas ilustrativas<br />La interfaz puede variar</p>
+        </div>
+      </section>
+
+      <div className="relative overflow-hidden bg-[#1e5948] py-4 text-[#f7f2e4]">
+        <div className="ticker-track flex w-max items-center gap-8 whitespace-nowrap text-[11px] font-bold uppercase tracking-[.19em]">
+          {Array.from({ length: 2 }).map((_, group) => (
+            <span key={group} className="flex items-center gap-8">
+              <span>Tu tienda, más en orden</span><span className="h-1.5 w-1.5 rounded-full bg-[#e5bd5c]" />
+              <span>Ventas sin enredos</span><span className="h-1.5 w-1.5 rounded-full bg-[#df8967]" />
+              <span>Inventario bajo control</span><span className="h-1.5 w-1.5 rounded-full bg-[#e5bd5c]" />
+              <span>Hecha para el día a día</span><span className="h-1.5 w-1.5 rounded-full bg-[#df8967]" />
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <section id="funciones" className="mx-auto max-w-[1240px] px-5 py-24 md:px-10 md:py-32">
+        <div className="grid gap-10 md:grid-cols-[.76fr_1.24fr] md:gap-16">
+          <div className="md:sticky md:top-10 md:self-start">
+            <p className="text-[11px] font-bold uppercase tracking-[.2em] text-[#bd6d50]">Todo en su lugar</p>
+            <h2 className="display mt-4 max-w-[470px] text-[clamp(2.4rem,4.5vw,4.25rem)] font-extrabold leading-[1.02] text-[#1e4036]">Menos cuentas en la cabeza. <span className="text-[#9baf8c]">Más tiempo</span> para atender.</h2>
+            <p className="mt-5 max-w-[370px] text-[15px] leading-[1.8] text-[#66756a]">Una herramienta simple para llevar las tareas que mantienen un negocio pequeño en marcha.</p>
+            <a href="#como-funciona" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#315c48]">Así de sencillo <ArrowDownRight size={16} /></a>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {features.map(({ number, icon: Icon, title, text, detail, tone }) => (
+              <article key={number} className={`feature-card relative min-h-[280px] overflow-hidden rounded-[25px] border border-[#e1ddcf] p-6 ${tone === 'sage' ? 'bg-[#e8eee2]' : tone === 'yellow' ? 'bg-[#f3e8c8]' : tone === 'coral' ? 'bg-[#f3e2d8]' : 'bg-[#e4ece8]'}`}>
+                <div className="flex items-start justify-between">
+                  <span className="grid h-11 w-11 place-items-center rounded-[14px] bg-[#fffdf4]/80 text-[#315d4a]"><Icon size={20} strokeWidth={1.8} /></span>
+                  <span className="text-[11px] font-bold tracking-[.12em] text-[#879087]">{number}</span>
+                </div>
+                <h3 className="display mt-7 text-[23px] font-bold leading-[1.12] tracking-[-.045em] text-[#214238]">{title}</h3>
+                <p className="mt-3 text-[13px] leading-[1.65] text-[#5d6c61]">{text}</p>
+                <div className="mt-5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.09em] text-[#66806e]"><span className="h-1.5 w-1.5 rounded-full bg-[#c86f50]" />{detail}</div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" className="relative bg-[#e8e7d8]">
+        <div className="mx-auto grid max-w-[1240px] items-center gap-12 px-5 py-20 md:grid-cols-[1fr_.92fr] md:px-10 md:py-28">
+          <div className="relative flex min-h-[420px] items-center justify-center">
+            <div className="absolute h-[350px] w-[350px] rounded-full bg-[#d4ddca] md:h-[420px] md:w-[420px]" />
+            <div className="relative z-10 scale-[.92] md:scale-100"><PhoneMockup variant="stock" /></div>
+            <div className="absolute bottom-[7%] left-[3%] z-20 flex items-center gap-3 rounded-2xl border border-[#ddd8c7] bg-[#fffdf3] p-3.5 shadow-[0_12px_30px_rgba(33,65,51,.12)]">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#f5e2d5] text-[#bd684b]"><Clock3 size={17} /></span>
+              <span><span className="block text-[10px] font-bold text-[#304a3f]">Al día, sin complicarte</span><span className="mt-1 block text-[9px] text-[#7a887e]">Lo importante, de un vistazo</span></span>
+            </div>
+          </div>
+          <div className="max-w-[510px] md:ml-4">
+            <p className="text-[11px] font-bold uppercase tracking-[.2em] text-[#bd6d50]">Un buen comienzo</p>
+            <h2 className="display mt-4 text-[clamp(2.6rem,4.8vw,4.6rem)] font-extrabold leading-[1.02] text-[#1d3f35]">Tu negocio ya tiene bastante que hacer.</h2>
+            <p className="mt-5 text-[15px] leading-[1.8] text-[#647267]">Por eso el control de inventario y las ventas empiezan con pasos directos. Sin hojas perdidas ni sistemas difíciles de descifrar.</p>
+            <div className="mt-8 space-y-5">
+              {[
+                ['01', 'Anota tus productos', 'Organiza lo que vendes y consulta tus existencias desde el teléfono.'],
+                ['02', 'Registra cada venta', 'Un registro rápido te ayuda a mantener tus números al día.'],
+                ['03', 'Revisa y repón', 'Identifica qué falta antes de que un producto se termine.'],
+              ].map(([n, title, body]) => (
+                <div key={n} className="flex gap-4 border-t border-[#d2d4c4] pt-4">
+                  <span className="pt-1 text-[11px] font-bold tracking-[.1em] text-[#c37354]">{n}</span>
+                  <div><h3 className="text-[14px] font-bold text-[#294a3e]">{title}</h3><p className="mt-1 text-[12px] leading-relaxed text-[#6b796f]">{body}</p></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1240px] px-5 py-24 md:px-10 md:py-32">
+        <div className="relative overflow-hidden rounded-[34px] bg-[#1d5847] px-7 py-12 text-[#f9f4e8] md:px-14 md:py-16">
+          <div className="absolute -right-20 -top-28 h-[400px] w-[400px] rounded-full border border-[#ffffff]/10" />
+          <div className="absolute -right-2 top-[-100px] h-[300px] w-[300px] rounded-full border border-[#ffffff]/10" />
+          <div className="relative z-10 grid items-center gap-8 md:grid-cols-[1fr_auto]">
+            <div className="max-w-[680px]">
+              <p className="text-[11px] font-bold uppercase tracking-[.22em] text-[#eac76c]">Un paso más ligero para tu tienda</p>
+              <h2 className="display mt-4 text-[clamp(2.5rem,5vw,4.6rem)] font-extrabold leading-[1.02]">Vuelve a enfocarte en las personas que entran por tu puerta.</h2>
+              <p className="mt-5 max-w-[500px] text-[14px] leading-[1.7] text-[#d4e0d4]">Prueba una forma más práctica de llevar ventas e inventario, estés en el mostrador o haciendo un pedido.</p>
+            </div>
+            <div className="md:pr-5">
+              <PlayButton />
+              <p className="mt-3 text-center text-[10px] text-[#b4c9b9]">Disponible en Google Play Store</p>
+            </div>
+          </div>
+          <div className="relative z-10 mt-12 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 pt-5 text-[10px] font-semibold uppercase tracking-[.12em] text-[#c8d8ca]">
+            <span className="inline-flex items-center gap-2"><Check size={13} className="text-[#eac76c]" /> Ventas organizadas</span>
+            <span className="inline-flex items-center gap-2"><Check size={13} className="text-[#eac76c]" /> Stock visible</span>
+            <span className="inline-flex items-center gap-2"><Check size={13} className="text-[#eac76c]" /> Hecha para el teléfono</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="preguntas" className="mx-auto max-w-[1060px] px-5 pb-24 md:px-10 md:pb-32">
+        <div className="grid gap-10 md:grid-cols-[.75fr_1.25fr] md:gap-20">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[.2em] text-[#bd6d50]">Antes de empezar</p>
+            <h2 className="display mt-4 text-[clamp(2.4rem,4vw,3.8rem)] font-extrabold leading-[1.03] text-[#1d4036]">Preguntas claras, respuestas claras.</h2>
+            <p className="mt-4 text-[14px] leading-relaxed text-[#6b796f]">Lo esencial para conocer Mi Negocio App.</p>
+          </div>
+          <div className="divide-y divide-[#d9d5c8] border-y border-[#d9d5c8]">
+            {questions.map((item, index) => (
+              <div key={item.q}>
+                <button className="flex w-full items-center justify-between gap-5 py-5 text-left" onClick={() => setOpenQuestion(openQuestion === index ? null : index)} aria-expanded={openQuestion === index}>
+                  <span className="text-[14px] font-bold text-[#2a4a3e] md:text-[15px]">{item.q}</span>
+                  <ChevronDown size={17} className={`shrink-0 text-[#bd6d50] transition-transform ${openQuestion === index ? 'rotate-180' : ''}`} />
+                </button>
+                {openQuestion === index && <p className="max-w-[600px] pb-5 pr-8 text-[13px] leading-[1.8] text-[#68776d]">{item.a}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-[#e8e7d8]">
+        <div className="mx-auto flex max-w-[1240px] flex-col gap-6 px-5 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
+          <BrandMark />
+          <p className="max-w-[370px] text-[11px] leading-relaxed text-[#748076]">Mi Negocio App: una manera práctica de organizar ventas y control de inventario desde tu celular.</p>
+          <a href={playUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[12px] font-bold text-[#285342]">Descargar app <ArrowRight size={14} /></a>
+        </div>
+        <div className="border-t border-[#d7d6c8]">
+          <div className="mx-auto flex max-w-[1240px] flex-col gap-2 px-5 py-4 text-[10px] text-[#7f887e] sm:flex-row sm:items-center sm:justify-between md:px-10">
+            <span>© {new Date().getFullYear()} Mi Negocio App</span>
+            <span>Las pantallas presentadas son ilustrativas; la experiencia final puede variar.</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}
+
+export default App;

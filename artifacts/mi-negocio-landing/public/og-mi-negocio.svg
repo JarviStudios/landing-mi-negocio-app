@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f5ea"/>
+      <stop offset="1" stop-color="#e8e7d8"/>
+    </linearGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#faf8ef"/>
+      <stop offset="1" stop-color="#eeeadd"/>
+    </linearGradient>
+    <filter id="shadow" x="-35%" y="-25%" width="180%" height="170%">
+      <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#183c34" flood-opacity=".20"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <path d="M0 0h1200v630H0z" fill="#fff" opacity=".12"/>
+  <g opacity=".35" stroke="#9eab94" stroke-width="1">
+    <path d="M0 70h1200M0 140h1200M0 210h1200M0 280h1200M0 350h1200M0 420h1200M0 490h1200M0 560h1200"/>
+    <path d="M70 0v630M140 0v630M210 0v630M280 0v630M350 0v630M420 0v630M490 0v630M560 0v630"/>
+  </g>
+  <g transform="translate(76 72)">
+    <rect width="54" height="54" rx="17" fill="#1e5948"/>
+    <rect x="13" y="13" width="12" height="12" rx="4" fill="#e8b64e"/>
+    <rect x="29" y="13" width="12" height="12" rx="4" fill="#f3eee0"/>
+    <rect x="13" y="29" width="12" height="12" rx="4" fill="#f3eee0"/>
+    <rect x="29" y="29" width="12" height="12" rx="4" fill="#df7b5d"/>
+  </g>
+  <text x="146" y="97" fill="#1c3d34" font-family="Arial, sans-serif" font-size="28" font-weight="700">mi negocio</text>
+  <text x="147" y="119" fill="#718078" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="2.5">APP PARA CRECER</text>
+  <rect x="78" y="179" width="338" height="40" rx="20" fill="#e5eddf"/>
+  <circle cx="100" cy="199" r="5" fill="#df865f"/>
+  <text x="117" y="204" fill="#4e7761" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.3">MENOS VUELTAS. MÁS NEGOCIO.</text>
+  <text x="75" y="293" fill="#1c3c33" font-family="Arial, sans-serif" font-size="57" font-weight="800" letter-spacing="-2.5">Punto de venta</text>
+  <text x="75" y="360" fill="#1c3c33" font-family="Arial, sans-serif" font-size="57" font-weight="800" letter-spacing="-2.5">e inventario,</text>
+  <text x="75" y="427" fill="#c56e4f" font-family="Arial, sans-serif" font-size="57" font-weight="800" letter-spacing="-2.5">fácil y gratis.</text>
+  <text x="79" y="481" fill="#5c6b60" font-family="Arial, sans-serif" font-size="21">Ventas, productos y alertas de stock</text>
+  <text x="79" y="511" fill="#5c6b60" font-family="Arial, sans-serif" font-size="21">en tu celular. Para el ritmo real de tu tienda.</text>
+  <g transform="translate(845 95)" filter="url(#shadow)">
+    <circle cx="142" cy="220" r="206" fill="#e7d894" opacity=".72"/>
+    <circle cx="142" cy="220" r="171" fill="none" stroke="#d9c98d" stroke-width="2"/>
+    <g transform="translate(68 9)">
+      <rect width="188" height="406" rx="32" fill="#183c34"/>
+      <rect x="7" y="7" width="174" height="392" rx="26" fill="url(#phone)"/>
+      <rect x="67" y="13" width="54" height="12" rx="6" fill="#183c34"/>
+      <text x="23" y="51" fill="#86918a" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="1">MIÉRCOLES, 12 JUN</text>
+      <text x="23" y="77" fill="#1c3d34" font-family="Arial, sans-serif" font-size="20" font-weight="800">Hola, Ana</text>
+      <circle cx="151" cy="69" r="15" fill="#e5eddf"/>
+      <text x="147" y="74" fill="#315e4d" font-family="Arial, sans-serif" font-size="12" font-weight="700">A</text>
+      <rect x="19" y="95" width="150" height="111" rx="16" fill="#215c49"/>
+      <text x="31" y="119" fill="#d6e5db" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="1">VENTAS DE HOY</text>
+      <text x="31" y="159" fill="#fff9e9" font-family="Arial, sans-serif" font-size="31" font-weight="800">$ 2,480</text>
+      <circle cx="36" cy="183" r="4" fill="#e7c66e"/>
+      <text x="47" y="187" fill="#e7c66e" font-family="Arial, sans-serif" font-size="10">18 ventas registradas</text>
+      <text x="20" y="233" fill="#29463d" font-family="Arial, sans-serif" font-size="12" font-weight="700">Venta reciente</text>
+      <g font-family="Arial, sans-serif">
+        <rect x="18" y="247" width="152" height="42" rx="10" fill="#fff" stroke="#e9e5d9"/>
+        <rect x="25" y="254" width="28" height="28" rx="8" fill="#f0d98e"/>
+        <text x="60" y="264" fill="#30483f" font-size="10" font-weight="700">Pan integral</text>
+        <text x="60" y="278" fill="#8a938b" font-size="8">10:42 a. m.</text>
+        <text x="135" y="272" fill="#315b4b" font-size="9" font-weight="700">$48</text>
+        <rect x="18" y="296" width="152" height="42" rx="10" fill="#fff" stroke="#e9e5d9"/>
+        <rect x="25" y="303" width="28" height="28" rx="8" fill="#e9baa5"/>
+        <text x="60" y="313" fill="#30483f" font-size="10" font-weight="700">Leche entera</text>
+        <text x="60" y="327" fill="#8a938b" font-size="8">10:18 a. m.</text>
+        <text x="132" y="321" fill="#315b4b" font-size="9" font-weight="700">$32.50</text>
+      </g>
+      <path d="M26 365h136" stroke="#e6e2d6"/>
+      <text x="29" y="382" fill="#315b4b" font-family="Arial, sans-serif" font-size="8" font-weight="700">⌂ Inicio</text>
+      <text x="78" y="382" fill="#8a938b" font-family="Arial, sans-serif" font-size="8">Productos</text>
+      <text x="132" y="382" fill="#8a938b" font-family="Arial, sans-serif" font-size="8">Ventas</text>
+    </g>
+    <g transform="translate(227 295)">
+      <rect width="177" height="70" rx="16" fill="#fffdf4" stroke="#dfdccf"/>
+      <circle cx="29" cy="35" r="17" fill="#f6e3d8"/>
+      <path d="M29 25v11m0 7h.1" stroke="#c16c4e" stroke-width="3" stroke-linecap="round"/>
+      <text x="54" y="30" fill="#2b493d" font-family="Arial, sans-serif" font-size="10" font-weight="700">Aviso de inventario</text>
+      <text x="54" y="48" fill="#718076" font-family="Arial, sans-serif" font-size="9">Café molido: pocas unidades</text>
+    </g>
+  </g>
+</svg>

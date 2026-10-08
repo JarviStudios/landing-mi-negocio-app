@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --font-sans: var(--app-font-sans);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --background: 43 48% 95%;
+  --foreground: 169 28% 15%;
+  --border: 40 22% 83%;
+  --input: 40 22% 83%;
+  --card: 43 42% 97%;
+  --card-foreground: 169 28% 15%;
+  --primary: 158 57% 31%;
+  --primary-foreground: 43 48% 96%;
+  --secondary: 39 81% 67%;
+  --secondary-foreground: 169 28% 15%;
+  --muted: 42 30% 90%;
+  --muted-foreground: 165 12% 42%;
+  --accent: 15 68% 61%;
+  --accent-foreground: 43 48% 96%;
+  --ring: 158 57% 31%;
+  --radius: 1rem;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Manrope', sans-serif;
+  --app-font-mono: 'DM Sans', monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #f4f0e4;
+  color: #1b3933;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+a { text-decoration: none; }
+::selection { background: #d5a84d; color: #193a33; }
+
+.display { font-family: 'Manrope', sans-serif; letter-spacing: -0.065em; }
+.hero-grid {
+  background-image: linear-gradient(rgba(25, 65, 55, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(25, 65, 55, .035) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+}
+.reveal { animation: rise-in .75s cubic-bezier(.2,.75,.25,1) both; }
+.reveal-delay-1 { animation-delay: .12s; }
+.reveal-delay-2 { animation-delay: .24s; }
+.reveal-delay-3 { animation-delay: .36s; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(-1deg); } }
+@keyframes float-small { 0%,100% { transform: translateY(0) rotate(4deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
+.phone-float { animation: float 6s ease-in-out infinite; }
+.phone-float-small { animation: float-small 5s ease-in-out infinite; }
+.feature-card { transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease; }
+.feature-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(23,55,48,.09); }
+.nav-link { transition: color .2s ease; }
+.nav-link:hover { color: #a85e42; }
+.cta { transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease; }
+.cta:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(19,65,52,.18); }
+.phone-screen { box-shadow: inset 0 0 0 1px rgba(25,57,50,.08); }
+.ticker-track { animation: ticker 28s linear infinite; }
+@keyframes ticker { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

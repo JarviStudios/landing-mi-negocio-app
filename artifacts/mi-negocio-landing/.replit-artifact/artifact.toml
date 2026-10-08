@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Mi Negocio App — Landing Page"
+description = "Landing page pública en español para presentar Mi Negocio App, una aplicación móvil de punto de venta y control de inventario para pequeños negocios, optimizada para SEO y para impulsar descargas en Google Play."
+version = "1.0.0"
+id = "artifacts/mi-negocio-landing"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22187
+
+[services.development]
+run = "pnpm --filter @workspace/mi-negocio-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mi-negocio-landing", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mi-negocio-landing/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22187"
+BASE_PATH = "/"
