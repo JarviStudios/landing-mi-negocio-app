@@ -5,8 +5,9 @@ import {
   Bell,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   CircleDollarSign,
-  Clock3,
   Menu,
   Package,
   ShoppingBasket,
@@ -16,6 +17,45 @@ import {
 } from 'lucide-react';
 
 const playUrl = 'https://play.google.com/store/apps/details?id=com.minegocioapp.app';
+
+const appScreens = [
+  {
+    key: 'orders',
+    label: 'Pedidos y cuentas',
+    src: '/promotional-screens/01-orders.png',
+    alt: 'Captura real de pedidos y cuentas activas en Mi Negocio App',
+  },
+  {
+    key: 'inventory',
+    label: 'Inventario',
+    src: '/promotional-screens/02-inventario.png',
+    alt: 'Captura real del inventario, productos y alertas de stock de Mi Negocio App',
+  },
+  {
+    key: 'sales',
+    label: 'Ventas',
+    src: '/promotional-screens/03-ventas.png',
+    alt: 'Captura real del historial y resumen de ventas de Mi Negocio App',
+  },
+  {
+    key: 'debts',
+    label: 'Deudas',
+    src: '/promotional-screens/04-deudas.png',
+    alt: 'Captura real de cuentas pendientes por cobrar en Mi Negocio App',
+  },
+  {
+    key: 'suppliers',
+    label: 'Proveedores',
+    src: '/promotional-screens/05-proveedores.png',
+    alt: 'Captura real de la gestión de proveedores en Mi Negocio App',
+  },
+  {
+    key: 'settings',
+    label: 'Ajustes',
+    src: '/promotional-screens/06-ajustes.png',
+    alt: 'Captura real de los ajustes del negocio en Mi Negocio App',
+  },
+] as const;
 
 const features = [
   {
@@ -63,7 +103,7 @@ const questions = [
   },
   {
     q: '¿Las imágenes de esta página son capturas reales?',
-    a: 'No. Las pantallas que ves son ilustraciones conceptuales para mostrar cómo se organiza la información. La interfaz real puede variar.',
+    a: 'Sí. Mostramos capturas reales de pedidos, inventario, ventas, cuentas pendientes, proveedores y ajustes de Mi Negocio App.',
   },
 ];
 
@@ -102,74 +142,29 @@ function PlayButton({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function PhoneMockup({ variant = 'sales' }: { variant?: 'sales' | 'stock' }) {
-  const sales = variant === 'sales';
+function PhoneMockup({
+  screen,
+  motion = 'sales',
+}: {
+  screen: (typeof appScreens)[number];
+  motion?: 'sales' | 'stock' | 'still';
+}) {
+  const motionClass =
+    motion === 'still' ? '' : motion === 'sales' ? 'phone-float' : 'phone-float-small';
+
   return (
-    <div className={`relative w-[250px] rounded-[35px] border-[7px] border-[#183c34] bg-[#183c34] p-[4px] shadow-[0_34px_80px_rgba(25,55,47,.23)] ${sales ? 'phone-float' : 'phone-float-small'}`}>
-      <div className="overflow-hidden rounded-[26px] bg-[#f8f6ed]">
-        <div className="flex h-7 items-center justify-between bg-[#f8f6ed] px-5 text-[9px] font-bold text-[#26473e]">
-          <span>9:41</span><span className="tracking-[.1em]">● ▮ ▰</span>
-        </div>
-        <div className="phone-screen px-4 pb-5 pt-2">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-[9px] font-semibold uppercase tracking-[.14em] text-[#86918a]">MIÉRCOLES, 12 JUN</p>
-              <p className="display mt-1 text-[18px] font-extrabold text-[#1c3d34]">Hola, Ana</p>
-            </div>
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#e5eddf] text-[11px] font-bold text-[#315e4d]">A</span>
-          </div>
-          <div className="mt-4 rounded-[17px] bg-[#215c49] p-3.5 text-[#fff9e9]">
-            <div className="flex items-center justify-between text-[9px] text-[#d6e5db]">
-              <span>{sales ? 'VENTAS DE HOY' : 'PRODUCTOS EN STOCK'}</span>
-              <span className="rounded-full bg-white/10 px-2 py-1">Hoy</span>
-            </div>
-            <p className="display mt-2 text-[25px] font-extrabold">{sales ? '$ 2,480' : '128'}</p>
-            <div className="mt-2 flex items-center gap-1.5 text-[9px] text-[#e7c66e]">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#e7c66e]" />
-              {sales ? '18 ventas registradas' : '6 productos por reponer'}
-            </div>
-          </div>
-          <div className="mt-4 flex items-center justify-between">
-            <p className="text-[11px] font-bold text-[#29463d]">{sales ? 'Venta reciente' : 'Revisar inventario'}</p>
-            <span className="text-[9px] font-semibold text-[#59836e]">Ver todo</span>
-          </div>
-          {sales ? (
-            <div className="mt-2 space-y-2">
-              {[
-                ['Pan integral', '10:42 a. m.', '$ 48.00', '#f0d98e'],
-                ['Leche entera', '10:18 a. m.', '$ 32.50', '#e9baa5'],
-                ['Arroz 1 kg', '9:56 a. m.', '$ 29.00', '#b9d4c0'],
-              ].map(([name, time, price, tint]) => (
-                <div key={name} className="flex items-center gap-2.5 rounded-[12px] border border-[#e9e5d9] bg-white/70 p-2">
-                  <span className="h-8 w-8 rounded-[9px]" style={{ backgroundColor: tint }} />
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[10px] font-bold text-[#30483f]">{name}</span>
-                    <span className="block text-[8px] text-[#8a938b]">{time}</span>
-                  </span>
-                  <span className="text-[10px] font-bold text-[#315b4b]">{price}</span>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="mt-2 space-y-2">
-              {[
-                ['Café molido 250 g', 'Quedan 3 unidades', '!', '#dd7d5e'],
-                ['Aceite vegetal 1 L', 'Quedan 5 unidades', '!', '#d9aa47'],
-                ['Galletas de avena', 'Quedan 8 unidades', '·', '#85a98d'],
-              ].map(([name, stock, sign, color]) => (
-                <div key={name} className="flex items-center gap-2 rounded-[12px] border border-[#e9e5d9] bg-white/70 p-2">
-                  <span className="grid h-7 w-7 place-items-center rounded-[8px] bg-[#f1eadb] text-[10px] font-bold" style={{ color }}>{sign}</span>
-                  <span><span className="block text-[9px] font-bold text-[#30483f]">{name}</span><span className="block text-[8px] text-[#8a938b]">{stock}</span></span>
-                </div>
-              ))}
-            </div>
-          )}
-          <div className="mt-3 flex items-center justify-around border-t border-[#e6e2d6] pt-3 text-[8px] font-semibold text-[#8a938b]">
-            <span className="text-[#315b4b]">⌂ Inicio</span><span>▦ Productos</span><span>◷ Ventas</span><span>☷ Más</span>
-          </div>
-        </div>
+    <div className={`relative w-[250px] rounded-[35px] border-[7px] border-[#183c34] bg-[#183c34] p-[4px] shadow-[0_34px_80px_rgba(25,55,47,.23)] ${motionClass}`}>
+      <div className="overflow-hidden rounded-[26px] bg-white">
+        <img
+          src={screen.src}
+          alt={screen.alt}
+          width={402}
+          height={874}
+          loading={motion === 'still' ? 'lazy' : 'eager'}
+          decoding="async"
+          className="block h-auto w-full"
+        />
       </div>
-      <div className="absolute left-1/2 top-[8px] h-[13px] w-[64px] -translate-x-1/2 rounded-full bg-[#183c34]" />
     </div>
   );
 }
@@ -177,8 +172,14 @@ function PhoneMockup({ variant = 'sales' }: { variant?: 'sales' | 'stock' }) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openQuestion, setOpenQuestion] = useState<number | null>(0);
+  const [activeScreenIndex, setActiveScreenIndex] = useState(1);
 
   const closeMenu = () => setMenuOpen(false);
+  const activeScreen = appScreens[activeScreenIndex];
+  const showPreviousScreen = () =>
+    setActiveScreenIndex((current) => (current - 1 + appScreens.length) % appScreens.length);
+  const showNextScreen = () =>
+    setActiveScreenIndex((current) => (current + 1) % appScreens.length);
 
   return (
     <main id="inicio" className="overflow-hidden">
@@ -241,10 +242,10 @@ function App() {
             </div>
             <p className="mt-2 text-[10px] leading-relaxed text-[#718076]">Café molido: quedan pocas unidades.</p>
           </div>
-          <div className="relative z-10 translate-x-5 md:translate-x-8"><PhoneMockup /></div>
-          <div className="absolute left-[2%] top-[27%] z-0 hidden scale-[.83] sm:block"><PhoneMockup variant="stock" /></div>
+          <div className="relative z-10 translate-x-5 md:translate-x-8"><PhoneMockup screen={appScreens[2]} /></div>
+          <div className="absolute left-[2%] top-[27%] z-0 hidden scale-[.83] sm:block"><PhoneMockup screen={appScreens[1]} motion="stock" /></div>
           <div className="absolute bottom-[10%] left-[7%] z-20 flex h-[54px] w-[54px] items-center justify-center rounded-full bg-[#dc7f5f] text-[#fff6e7] shadow-lg"><ArrowDownRight size={25} /></div>
-          <p className="absolute bottom-[2%] right-[6%] z-20 max-w-[150px] text-right text-[9px] font-semibold uppercase leading-relaxed tracking-[.13em] text-[#748178]">Pantallas ilustrativas<br />La interfaz puede variar</p>
+          <p className="absolute bottom-[2%] right-[6%] z-20 max-w-[150px] text-right text-[9px] font-semibold uppercase leading-relaxed tracking-[.13em] text-[#748178]">Capturas reales<br />de la aplicación</p>
         </div>
       </section>
 
@@ -289,10 +290,41 @@ function App() {
         <div className="mx-auto grid max-w-[1240px] items-center gap-12 px-5 py-20 md:grid-cols-[1fr_.92fr] md:px-10 md:py-28">
           <div className="relative flex min-h-[420px] items-center justify-center">
             <div className="absolute h-[350px] w-[350px] rounded-full bg-[#d4ddca] md:h-[420px] md:w-[420px]" />
-            <div className="relative z-10 scale-[.92] md:scale-100"><PhoneMockup variant="stock" /></div>
-            <div className="absolute bottom-[7%] left-[3%] z-20 flex items-center gap-3 rounded-2xl border border-[#ddd8c7] bg-[#fffdf3] p-3.5 shadow-[0_12px_30px_rgba(33,65,51,.12)]">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#f5e2d5] text-[#bd684b]"><Clock3 size={17} /></span>
-              <span><span className="block text-[10px] font-bold text-[#304a3f]">Al día, sin complicarte</span><span className="mt-1 block text-[9px] text-[#7a887e]">Lo importante, de un vistazo</span></span>
+            <div className="relative z-10 flex flex-col items-center scale-[.92] md:scale-100">
+              <PhoneMockup screen={activeScreen} motion="still" />
+              <div className="mt-4 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={showPreviousScreen}
+                  aria-label="Mostrar captura anterior"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-[#c9d0c4] bg-[#fffdf3] text-[#315c48] transition hover:bg-[#dce5d5]"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <span aria-live="polite" className="min-w-[116px] text-center text-[12px] font-bold text-[#315c48]">
+                  {activeScreen.label}
+                </span>
+                <button
+                  type="button"
+                  onClick={showNextScreen}
+                  aria-label="Mostrar captura siguiente"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-[#c9d0c4] bg-[#fffdf3] text-[#315c48] transition hover:bg-[#dce5d5]"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+              <div className="mt-3 flex items-center gap-2" aria-label="Seleccionar captura">
+                {appScreens.map((screen, index) => (
+                  <button
+                    key={screen.key}
+                    type="button"
+                    onClick={() => setActiveScreenIndex(index)}
+                    aria-label={`Mostrar pantalla: ${screen.label}`}
+                    aria-pressed={activeScreenIndex === index}
+                    className={`h-2.5 rounded-full transition-all ${activeScreenIndex === index ? 'w-6 bg-[#315c48]' : 'w-2.5 bg-[#a8b4a2] hover:bg-[#66806e]'}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
           <div className="max-w-[510px] md:ml-4">
@@ -368,7 +400,7 @@ function App() {
         <div className="border-t border-[#d7d6c8]">
           <div className="mx-auto flex max-w-[1240px] flex-col gap-2 px-5 py-4 text-[10px] text-[#7f887e] sm:flex-row sm:items-center sm:justify-between md:px-10">
             <span>© {new Date().getFullYear()} Mi Negocio App</span>
-            <span>Las pantallas presentadas son ilustrativas; la experiencia final puede variar.</span>
+            <span>Las imágenes muestran pantallas reales de Mi Negocio App.</span>
           </div>
         </div>
       </footer>
