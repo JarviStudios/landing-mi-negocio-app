@@ -1,0 +1,1 @@
+- [GitHub repo linking](github-repo-linking.md) — when shell authentication is unavailable, link the repo through Replit's Git pane instead of handling tokens.
