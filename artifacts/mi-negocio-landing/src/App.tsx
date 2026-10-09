@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 
 const playUrl = 'https://play.google.com/store/apps/details?id=com.minegocioapp.app';
+const whatsappUrl = 'https://wa.me/50254376585';
+const legalUrl = 'https://www.privacypolicies.com/live/532feec5-3413-4469-a859-61730a2ed823';
 
 const appScreens = [
   {
@@ -141,6 +143,15 @@ function PlayButton({ compact = false }: { compact?: boolean }) {
   );
 }
 
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.91 11.91 0 0 0 12.04.02C5.49.02.15 5.36.15 11.91c0 2.1.55 4.16 1.6 5.98L.05 23.9l6.16-1.62a11.88 11.88 0 0 0 5.83 1.49h.01c6.55 0 11.89-5.34 11.89-11.89a11.83 11.83 0 0 0-3.42-8.4Zm-8.48 18.26h-.01a9.88 9.88 0 0 1-5.03-1.38l-.36-.21-3.66.96.98-3.57-.23-.37a9.89 9.89 0 1 1 8.31 4.57Z" />
+      <path d="M17.47 14.38c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.23-.65.08-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.51-.68-.52-.17-.01-.38-.01-.58-.01s-.53.08-.81.38c-.28.3-1.06 1.03-1.06 2.5s1.09 2.91 1.24 3.11c.15.2 2.14 3.27 5.19 4.59.73.32 1.3.51 1.75.65.74.24 1.41.21 1.94.13.59-.09 1.78-.73 2.03-1.44.25-.71.25-1.32.17-1.44-.08-.13-.28-.2-.58-.35Z" />
+    </svg>
+  );
+}
+
 function PhoneMockup({
   screen,
   motion = 'sales',
@@ -181,13 +192,15 @@ function App() {
     setActiveScreenIndex((current) => (current + 1) % appScreens.length);
 
   return (
-    <main id="inicio" className="overflow-hidden">
+    <>
+      <main id="inicio" className="overflow-hidden">
       <header className="relative z-20 mx-auto flex max-w-[1240px] items-center justify-between px-5 py-5 md:px-10">
         <BrandMark />
         <nav className="hidden items-center gap-9 text-[13px] font-semibold text-[#53675e] md:flex" aria-label="Navegación principal">
           <a className="nav-link" href="#funciones">Funciones</a>
           <a className="nav-link" href="#como-funciona">Cómo funciona</a>
           <a className="nav-link" href="#preguntas">Preguntas</a>
+          <a className="nav-link" href="#contacto">Contacto</a>
         </nav>
         <a href={playUrl} target="_blank" rel="noreferrer" className="hidden rounded-full border border-[#c9d0c4] px-5 py-3 text-[13px] font-bold text-[#24483c] transition hover:border-[#1d5847] hover:bg-[#e9eddf] sm:inline-flex">
           Descargar app <ArrowRight className="ml-2" size={15} />
@@ -197,7 +210,7 @@ function App() {
         </button>
         {menuOpen && (
           <nav className="absolute left-4 right-4 top-[76px] flex flex-col gap-1 rounded-2xl border border-[#e0dccf] bg-[#faf7ed] p-3 shadow-xl md:hidden" aria-label="Navegación móvil">
-            {[['Funciones', '#funciones'], ['Cómo funciona', '#como-funciona'], ['Preguntas', '#preguntas']].map(([label, href]) => (
+            {[['Funciones', '#funciones'], ['Cómo funciona', '#como-funciona'], ['Preguntas', '#preguntas'], ['Contacto', '#contacto']].map(([label, href]) => (
               <a key={href} onClick={closeMenu} href={href} className="rounded-xl px-4 py-3 text-sm font-semibold text-[#294d40] hover:bg-[#eeecdf]">{label}</a>
             ))}
             <a onClick={closeMenu} href={playUrl} target="_blank" rel="noreferrer" className="mt-1 rounded-xl bg-[#1d5847] px-4 py-3 text-sm font-bold text-[#fff9e9]">Descargar en Google Play Store</a>
@@ -389,20 +402,70 @@ function App() {
         </div>
       </section>
 
-      <footer className="bg-[#e8e7d8]">
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-6 px-5 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
-          <BrandMark />
-          <p className="max-w-[370px] text-[11px] leading-relaxed text-[#748076]">Mi Negocio App: una manera práctica de organizar ventas y control de inventario desde tu celular.</p>
-          <a href={playUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[12px] font-bold text-[#285342]">Descargar app <ArrowRight size={14} /></a>
+      <footer id="contacto" className="bg-[#e8e7d8]">
+        <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-9 px-5 py-11 sm:grid-cols-2 md:px-10 lg:grid-cols-[1fr_1.15fr_.7fr]">
+          <div>
+            <BrandMark />
+            <p className="mt-4 max-w-[330px] text-[12px] leading-[1.75] text-[#748076]">Mi Negocio App: una manera práctica de organizar ventas y control de inventario desde tu celular.</p>
+            <a href={playUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold text-[#285342]">Descargar app <ArrowRight size={14} /></a>
+          </div>
+
+          <div>
+            <div className="flex items-center gap-4">
+              <img
+                src="/logoJS.jpeg"
+                alt="Logo de Jarvistudio"
+                width={640}
+                height={640}
+                loading="eager"
+                className="h-[72px] w-[72px] shrink-0 rounded-2xl border border-[#e1ddcf] bg-white p-1 object-contain"
+              />
+              <p className="max-w-[340px] text-[12px] leading-[1.65] text-[#50645a]">
+                <span className="font-bold text-[#25473b]">Desarrollado por Jarvistudio</span>
+                <span> - Desarrollo de aplicaciones móviles y soluciones tecnológicas</span>
+              </p>
+            </div>
+            <dl className="mt-5 grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 text-[11px] leading-relaxed">
+              <dt className="font-bold text-[#617167]">Empresa</dt>
+              <dd className="text-[#50645a]">Jarvistudio</dd>
+              <dt className="font-bold text-[#617167]">Categoría</dt>
+              <dd className="text-[#50645a]">Empresa de Tecnología e Información</dd>
+              <dt className="font-bold text-[#617167]">Ubicación</dt>
+              <dd className="text-[#50645a]">Guatemala</dd>
+            </dl>
+          </div>
+
+          <div>
+            <h2 className="text-[11px] font-bold uppercase tracking-[.14em] text-[#617167]">Enlaces y contacto</h2>
+            <nav className="mt-4 flex flex-col items-start gap-3 text-[12px] font-semibold text-[#285342]" aria-label="Enlaces del pie de página">
+              <a href={legalUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">Políticas de Privacidad</a>
+              <a href={legalUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">Términos de Uso</a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:underline">
+                <WhatsAppIcon /> Atención por WhatsApp
+              </a>
+            </nav>
+          </div>
         </div>
         <div className="border-t border-[#d7d6c8]">
           <div className="mx-auto flex max-w-[1240px] flex-col gap-2 px-5 py-4 text-[10px] text-[#7f887e] sm:flex-row sm:items-center sm:justify-between md:px-10">
-            <span>© {new Date().getFullYear()} Mi Negocio App</span>
+            <span>© {new Date().getFullYear()} Mi Negocio App · Jarvistudio · Guatemala</span>
             <span>Las imágenes muestran pantallas reales de Mi Negocio App.</span>
           </div>
         </div>
       </footer>
-    </main>
+      </main>
+
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="¿Tienes dudas? Escríbenos por WhatsApp"
+        className="fixed bottom-4 right-4 z-50 inline-flex max-w-[calc(100vw-2rem)] items-center gap-2.5 rounded-full bg-[#128c4c] px-4 py-3 text-[11px] font-bold leading-tight text-white shadow-[0_10px_28px_rgba(18,140,76,.28)] transition hover:-translate-y-0.5 hover:bg-[#0f7c42] sm:bottom-6 sm:right-6 sm:gap-3 sm:px-5 sm:py-3.5 sm:text-[13px]"
+      >
+        <WhatsAppIcon />
+        <span>¿Tienes dudas? Escríbenos por WhatsApp</span>
+      </a>
+    </>
   );
 }
 
