@@ -3,15 +3,19 @@ import {
   ArrowDownRight,
   ArrowRight,
   Bell,
+  Camera,
   Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  CreditCard,
   Menu,
   Package,
   ShoppingBasket,
   Smartphone,
   Truck,
+  Wallet,
+  Zap,
   X,
 } from 'lucide-react';
 
@@ -25,36 +29,80 @@ const appScreens = [
     label: 'Pedidos y cuentas',
     src: '/promotional-screens/01-orders.png',
     alt: 'Captura real de pedidos y cuentas activas en Mi Negocio App',
+    width: 402,
+    height: 874,
   },
   {
     key: 'inventory',
     label: 'Inventario',
     src: '/promotional-screens/02-inventario.png',
     alt: 'Captura real del inventario, productos y alertas de stock de Mi Negocio App',
+    width: 402,
+    height: 874,
   },
   {
     key: 'sales',
-    label: 'Ventas',
-    src: '/promotional-screens/03-ventas.png',
-    alt: 'Captura real del historial y resumen de ventas de Mi Negocio App',
+    label: 'Ventas y caja',
+    src: '/promotional-screens/03-ventas-real.jpeg',
+    alt: 'Captura real de ventas, caja actual e historial por fecha en Mi Negocio App',
+    width: 540,
+    height: 1196,
+  },
+  {
+    key: 'quick-sale',
+    label: 'Cobro rápido',
+    src: '/promotional-screens/07-cobro-rapido.jpeg',
+    alt: 'Catálogo de productos con fotos y botón para cobrar una venta en Mi Negocio App',
+    width: 540,
+    height: 1196,
+  },
+  {
+    key: 'payments',
+    label: 'Métodos de pago',
+    src: '/promotional-screens/08-metodos-pago.jpeg',
+    alt: 'Opciones de cobro en efectivo, transferencia, tarjeta, fiado y pago mixto',
+    width: 540,
+    height: 1196,
+  },
+  {
+    key: 'receipt',
+    label: 'Recibo de venta',
+    src: '/promotional-screens/09-recibo-venta.jpeg',
+    alt: 'Recibo de venta claro con opciones para compartir por WhatsApp o generar PDF',
+    width: 540,
+    height: 1196,
+  },
+  {
+    key: 'cash-change',
+    label: 'Cambio y vuelto',
+    src: '/promotional-screens/10-cambio-vuelto.jpeg',
+    alt: 'Confirmación de cobro en efectivo con cálculo del cambio para el cliente',
+    width: 540,
+    height: 1196,
   },
   {
     key: 'debts',
     label: 'Deudas',
     src: '/promotional-screens/04-deudas.png',
     alt: 'Captura real de cuentas pendientes por cobrar en Mi Negocio App',
+    width: 402,
+    height: 874,
   },
   {
     key: 'suppliers',
     label: 'Proveedores',
     src: '/promotional-screens/05-proveedores.png',
     alt: 'Captura real de la gestión de proveedores en Mi Negocio App',
+    width: 402,
+    height: 874,
   },
   {
     key: 'settings',
     label: 'Ajustes',
     src: '/promotional-screens/06-ajustes.png',
     alt: 'Captura real de los ajustes del negocio en Mi Negocio App',
+    width: 402,
+    height: 874,
   },
 ] as const;
 
@@ -62,21 +110,37 @@ const features = [
   {
     number: '01',
     icon: Package,
-    title: 'Control de Inventario y Alertas',
-    text: 'Ten a la vista lo que tienes, lo que se mueve y lo que ya toca reponer. Sin contar a ciegas al final del día.',
+    title: 'Inventario y alertas al día',
+    text: 'Revisa existencias y detecta qué hace falta reponer antes de que se termine. Así el emprendedor mantiene su negocio bajo control.',
     detail: 'Existencias al día · Avisos de stock bajo',
     tone: 'sage',
   },
   {
     number: '02',
-    icon: ShoppingBasket,
-    title: 'Registro de Ventas Rápidas',
-    text: 'Registra cada venta en unos toques y vuelve a atender. El inventario se actualiza mientras sigues con tu negocio.',
-    detail: 'Venta sencilla · Historial claro',
+    icon: Zap,
+    title: 'Cobros y ventas en un clic',
+    text: 'Elige los productos, revisa el total y pasa al cobro en pocos toques. Cada venta queda registrada al instante para seguir atendiendo.',
+    detail: 'Cobro rápido · Venta registrada',
     tone: 'yellow',
   },
   {
     number: '03',
+    icon: Camera,
+    title: 'Fotos propias de tus productos',
+    text: 'Toma y guarda fotos desde el celular para reconocer cada artículo fácilmente en el catálogo al momento de vender.',
+    detail: 'Tu catálogo · Tus fotografías',
+    tone: 'coral',
+  },
+  {
+    number: '04',
+    icon: CreditCard,
+    title: 'Pagos y recibos de caja',
+    text: 'Registra efectivo, transferencia o tarjeta. Genera comprobantes claros y compártelos por WhatsApp o como PDF para tus clientes.',
+    detail: 'Efectivo · Transferencia · Tarjeta',
+    tone: 'blue',
+  },
+  {
+    number: '05',
     icon: Truck,
     title: 'Gestión de Proveedores',
     text: 'Guarda los datos de tus proveedores y ten a mano a quién llamar cuando un producto empieza a escasear.',
@@ -84,27 +148,60 @@ const features = [
     tone: 'coral',
   },
   {
-    number: '04',
+    number: '06',
     icon: Bell,
     title: 'Notificaciones Automáticas',
-    text: 'Recibe recordatorios útiles para estar pendiente de tu inventario, sin tener que revisar cada producto uno por uno.',
-    detail: 'Avisos oportunos · Menos pendientes',
+    text: 'Recibe avisos útiles para estar pendiente de tu inventario y de las tareas de tu emprendimiento, sin revisar cada producto uno por uno.',
+    detail: 'Avisos oportunos · Más claridad',
     tone: 'blue',
+  },
+  {
+    number: '07',
+    icon: Wallet,
+    title: 'Caja por turno e historial de ventas',
+    text: 'Consulta la caja actual, revisa las ventas por fecha, registra el cierre de turno y mira la ganancia proyectada.',
+    detail: 'Caja actual · Cierre · Historial',
+    tone: 'lavender',
+  },
+  {
+    number: '08',
+    icon: ShoppingBasket,
+    title: 'Pedidos y cuentas al día',
+    text: 'Consulta pedidos activos y lleva las cuentas pendientes de tus clientes para no perder de vista cada venta.',
+    detail: 'Pedidos · Cuentas de clientes',
+    tone: 'mint',
   },
 ];
 
+const featureToneClasses: Record<string, string> = {
+  sage: 'bg-[#e8eee2]',
+  yellow: 'bg-[#f3e8c8]',
+  coral: 'bg-[#f3e2d8]',
+  blue: 'bg-[#e4ece8]',
+  lavender: 'bg-[#eee8f7]',
+  mint: 'bg-[#e2eee6]',
+};
+
 const questions = [
   {
-    q: '¿Mi Negocio App es un punto de venta gratis?',
-    a: 'Puedes descargar Mi Negocio App desde Google Play Store y empezar a organizar las ventas y el inventario de tu negocio desde tu celular. Consulta la ficha de la app para conocer sus condiciones actuales.',
+    q: '¿Mi Negocio App es un punto de venta gratis para emprendedores?',
+    a: 'Descárgala desde Google Play Store y comienza a organizar las ventas y el inventario de tu emprendimiento. Consulta la ficha de la app para conocer sus condiciones actuales.',
   },
   {
-    q: '¿Necesito experiencia con sistemas de inventario?',
-    a: 'No. La app está pensada para el trabajo diario de una tienda: registrar productos, anotar ventas y revisar qué hace falta reponer, con pasos fáciles de seguir.',
+    q: '¿Qué métodos de pago puedo registrar?',
+    a: 'Puedes registrar efectivo, transferencia o tarjeta. También aparecen opciones de fiado y pago mixto. Después puedes compartir el recibo por WhatsApp o generar un PDF para imprimir.',
+  },
+  {
+    q: '¿Puedo guardar fotos propias de mis productos?',
+    a: 'Sí. La app permite capturar y guardar fotografías desde el celular para identificar los productos en el catálogo cuando registras una venta.',
+  },
+  {
+    q: '¿Puedo revisar la caja y el historial de ventas?',
+    a: 'Sí. Puedes consultar los totales del turno, revisar ventas por fecha y registrar el cierre de caja desde Mi Negocio App.',
   },
   {
     q: '¿Las imágenes de esta página son capturas reales?',
-    a: 'Sí. Mostramos capturas reales de pedidos, inventario, ventas, cuentas pendientes, proveedores y ajustes de Mi Negocio App.',
+    a: 'Sí. Incluimos capturas reales de ventas, caja, pedidos, inventario, cobros, métodos de pago, recibos, proveedores y ajustes.',
   },
 ];
 
@@ -168,8 +265,8 @@ function PhoneMockup({
         <img
           src={screen.src}
           alt={screen.alt}
-          width={402}
-          height={874}
+          width={screen.width}
+          height={screen.height}
           loading={motion === 'still' ? 'lazy' : 'eager'}
           decoding="async"
           className="block h-auto w-full"
@@ -182,7 +279,7 @@ function PhoneMockup({
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openQuestion, setOpenQuestion] = useState<number | null>(0);
-  const [activeScreenIndex, setActiveScreenIndex] = useState(1);
+  const [activeScreenIndex, setActiveScreenIndex] = useState(2);
 
   const closeMenu = () => setMenuOpen(false);
   const activeScreen = appScreens[activeScreenIndex];
@@ -222,19 +319,19 @@ function App() {
         <div className="relative z-10 mx-auto w-full max-w-[630px] md:ml-auto md:mr-0 md:pb-9">
           <div className="reveal inline-flex items-center gap-2 rounded-full border border-[#d8d5c5] bg-[#f8f5ea]/80 px-3.5 py-2 text-[11px] font-bold uppercase tracking-[.12em] text-[#4e7761]">
             <span className="h-2 w-2 rounded-full bg-[#df865f]" />
-            Menos vueltas. Más negocio.
+            Punto de venta y control de inventario
           </div>
           <h1 className="display reveal reveal-delay-1 mt-6 max-w-[690px] text-[clamp(2.9rem,6vw,5.8rem)] font-extrabold leading-[.99] text-[#1c3c33]">
-            El punto de venta y control de inventario <span className="relative inline-block text-[#c56e4f]">fácil<span className="absolute -bottom-1 left-0 h-[5px] w-full rounded-full bg-[#e9bd57]" /></span> para tu negocio
+            La herramienta hecha para el <span className="relative inline-block text-[#c56e4f]">emprendedor<span className="absolute -bottom-1 left-0 h-[5px] w-full rounded-full bg-[#e9bd57]" /></span> guatemalteco
           </h1>
           <p className="reveal reveal-delay-2 mt-7 max-w-[500px] text-[16px] leading-[1.75] text-[#5c6b60] md:text-[17px]">
-            Mi Negocio App te ayuda a registrar ventas, ordenar tus productos y saber qué reponer, todo desde el celular. Claro y práctico para el ritmo real de tu tienda.
+            Toma el control de tu emprendimiento desde tu celular: cobra en un clic, registra ventas, guarda fotos propias de tus productos y mantén el inventario en orden.
           </p>
           <div className="reveal reveal-delay-3 mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <PlayButton />
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-semibold text-[#778177]">
-            <span className="inline-flex items-center gap-2"><Check size={14} className="text-[#438060]" /> Diseñada para negocios pequeños</span>
+            <span className="inline-flex items-center gap-2"><Check size={14} className="text-[#438060]" /> Hecha para emprendedores guatemaltecos</span>
             <span className="inline-flex items-center gap-2"><Smartphone size={13} className="text-[#438060]" /> En tu celular, donde estés</span>
           </div>
         </div>
@@ -242,9 +339,15 @@ function App() {
         <div className="relative mx-auto mt-16 flex h-[460px] w-full max-w-[610px] items-center justify-center md:mt-0 md:h-[600px]">
           <div className="absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e7d894]/50 md:h-[500px] md:w-[500px]" />
           <div className="grain absolute left-1/2 top-1/2 h-[315px] w-[315px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d9c98d] md:h-[410px] md:w-[410px]" />
-          <div className="absolute left-[7%] top-[19%] z-10 hidden w-[145px] rounded-[15px] border border-[#e5e5e5] bg-[#fafafa] px-3 py-2.5 shadow-[0_8px_20px_rgba(34,34,34,.07)] sm:block">
-            <p className="text-[11px] font-medium leading-tight text-[#777777]">Hoy</p>
-            <p className="mt-1.5 text-[15px] font-bold leading-tight tracking-[-.02em] text-[#8957e7]">Q486.75</p>
+          <div className="absolute left-[-7%] top-[17%] z-20 hidden w-[238px] grid-cols-2 gap-2 sm:grid">
+            <div className="rounded-[15px] border border-[#e5e5e5] bg-[#fafafa] px-3 py-2.5 shadow-[0_8px_20px_rgba(34,34,34,.07)]">
+              <p className="text-[9px] font-medium uppercase leading-tight text-[#777777]">Hoy</p>
+              <p className="mt-1.5 text-[14px] font-bold leading-tight tracking-[-.02em] text-[#8957e7]">Q2.00</p>
+            </div>
+            <div className="rounded-[15px] border border-[#e5e5e5] bg-[#fafafa] px-2.5 py-2.5 shadow-[0_8px_20px_rgba(34,34,34,.07)]">
+              <p className="text-[8px] font-medium uppercase leading-tight text-[#777777]">Caja actual (turno)</p>
+              <p className="mt-1.5 text-[14px] font-bold leading-tight tracking-[-.02em] text-[#8957e7]">Q793.00</p>
+            </div>
           </div>
           <div className="absolute bottom-[15%] right-[2%] z-20 hidden w-[190px] rounded-[18px] border border-[#dfdccf] bg-[#fffdf4] p-3.5 shadow-[0_14px_35px_rgba(31,61,50,.1)] sm:block">
             <div className="flex items-center gap-2">
@@ -264,10 +367,10 @@ function App() {
         <div className="ticker-track flex w-max items-center gap-8 whitespace-nowrap text-[11px] font-bold uppercase tracking-[.19em]">
           {Array.from({ length: 2 }).map((_, group) => (
             <span key={group} className="flex items-center gap-8">
-              <span>Tu tienda, más en orden</span><span className="h-1.5 w-1.5 rounded-full bg-[#e5bd5c]" />
-              <span>Ventas sin enredos</span><span className="h-1.5 w-1.5 rounded-full bg-[#df8967]" />
+              <span>Emprendedores de Guatemala</span><span className="h-1.5 w-1.5 rounded-full bg-[#e5bd5c]" />
+              <span>Cobros en un clic</span><span className="h-1.5 w-1.5 rounded-full bg-[#df8967]" />
               <span>Inventario bajo control</span><span className="h-1.5 w-1.5 rounded-full bg-[#e5bd5c]" />
-              <span>Hecha para el día a día</span><span className="h-1.5 w-1.5 rounded-full bg-[#df8967]" />
+              <span>Recibos claros para tus clientes</span><span className="h-1.5 w-1.5 rounded-full bg-[#df8967]" />
             </span>
           ))}
         </div>
@@ -276,14 +379,14 @@ function App() {
       <section id="funciones" className="mx-auto max-w-[1240px] px-5 py-24 md:px-10 md:py-32">
         <div className="grid gap-10 md:grid-cols-[.76fr_1.24fr] md:gap-16">
           <div className="md:sticky md:top-10 md:self-start">
-            <p className="text-[11px] font-bold uppercase tracking-[.2em] text-[#bd6d50]">Todo en su lugar</p>
-            <h2 className="display mt-4 max-w-[470px] text-[clamp(2.4rem,4.5vw,4.25rem)] font-extrabold leading-[1.02] text-[#1e4036]">Menos cuentas en la cabeza. <span className="text-[#9baf8c]">Más tiempo</span> para atender.</h2>
-            <p className="mt-5 max-w-[370px] text-[15px] leading-[1.8] text-[#66756a]">Una herramienta simple para llevar las tareas que mantienen un negocio pequeño en marcha.</p>
+            <p className="text-[11px] font-bold uppercase tracking-[.2em] text-[#bd6d50]">Hecha para el emprendedor guatemalteco</p>
+            <h2 className="display mt-4 max-w-[470px] text-[clamp(2.4rem,4.5vw,4.25rem)] font-extrabold leading-[1.02] text-[#1e4036]">Cada producto, venta y cobro <span className="text-[#9baf8c]">en su lugar.</span></h2>
+            <p className="mt-5 max-w-[370px] text-[15px] leading-[1.8] text-[#66756a]">Herramientas prácticas para que los emprendedores atiendan, repongan y cierren el día con más claridad.</p>
             <a href="#como-funciona" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#315c48]">Así de sencillo <ArrowDownRight size={16} /></a>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {features.map(({ number, icon: Icon, title, text, detail, tone }) => (
-              <article key={number} className={`feature-card relative min-h-[280px] overflow-hidden rounded-[25px] border border-[#e1ddcf] p-6 ${tone === 'sage' ? 'bg-[#e8eee2]' : tone === 'yellow' ? 'bg-[#f3e8c8]' : tone === 'coral' ? 'bg-[#f3e2d8]' : 'bg-[#e4ece8]'}`}>
+              <article key={number} className={`feature-card relative min-h-[280px] overflow-hidden rounded-[25px] border border-[#e1ddcf] p-6 ${featureToneClasses[tone]}`}>
                 <div className="flex items-start justify-between">
                   <span className="grid h-11 w-11 place-items-center rounded-[14px] bg-[#fffdf4]/80 text-[#315d4a]"><Icon size={20} strokeWidth={1.8} /></span>
                   <span className="text-[11px] font-bold tracking-[.12em] text-[#879087]">{number}</span>
