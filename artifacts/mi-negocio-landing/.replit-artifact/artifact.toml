@@ -12,12 +12,12 @@ paths = [ "/" ]
 localPort = 22187
 
 [services.development]
-run = "pnpm --filter @workspace/mi-negocio-landing run dev"
+run = "pnpm run dev"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/mi-negocio-landing", "run", "build" ]
+build = [ "pnpm", "run", "build" ]
 serve = "static"
-publicDir = "artifacts/mi-negocio-landing/dist/public"
+publicDir = "dist"
 
 [[services.production.rewrites]]
 from = "/*"

@@ -1,1 +1,2 @@
 - [GitHub repo linking](github-repo-linking.md) — when shell authentication is unavailable, link the repo through Replit's Git pane instead of handling tokens.
+- [Landing root migration](landing-root-migration.md) — keep the landing build at root while preserving the sibling Replit artifacts.
